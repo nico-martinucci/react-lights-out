@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cell from "./Cell";
 import "./Board.css";
+import { createBoard, hasWon } from "./helpers";
 
 /** Game board of Lights out.
  *
@@ -27,19 +28,8 @@ import "./Board.css";
  *
  **/
 
-function Board({ nrows, ncols, chanceLightStartsOn }) {
-  const [board, setBoard] = useState(createBoard());
-
-  /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
-  function createBoard() {
-    let initialBoard = [];
-    // TODO: create array-of-arrays of true/false values
-    return initialBoard;
-  }
-
-  function hasWon() {
-    // TODO: check the board in state to determine whether the player has won.
-  }
+function Board({ nrows, ncols, chanceLightStartsOn=0.7 }) {
+  const [board, setBoard] = useState(createBoard(nrows, ncols, chanceLightStartsOn));
 
   function flipCellsAround(coord) {
     setBoard(oldBoard => {
@@ -62,7 +52,9 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   }
 
   // if the game is won, just show a winning msg & render nothing else
+  if (hasWon(board)) {
 
+  }
   // TODO
 
   // make table board
