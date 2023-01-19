@@ -29,7 +29,7 @@ function createBoard(nrows, ncols, chanceLightStartsOn) {
  */
 function hasWon(board) {
     for (let row of board) {
-      if (row.includes("O")) {
+      if (row.includes(true)) {
         return false;
       }
     }

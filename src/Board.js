@@ -29,7 +29,7 @@ import cloneDeep from "lodash/cloneDeep";
  *
  **/
 
-function Board({ nrows=5, ncols=5, chanceLightStartsOn=0.7 }) {
+function Board({ nrows=5, ncols=5, chanceLightStartsOn=0.6 }) {
   const [board, setBoard] = useState(createBoard(nrows, ncols, chanceLightStartsOn));
 
   function flipCellsAround(coord) {
@@ -56,16 +56,15 @@ function Board({ nrows=5, ncols=5, chanceLightStartsOn=0.7 }) {
     });
   }
 
-  if (hasWon(board)) {
-    // TODO: 
-  }
+  //TODO: YOU WIN
+  hasWon(board)
 
   const gameBoard = (
     board.map((row, y) => {
-      return <tr>
+      return <tr key={y}>
         {row.map((cell, x) => {
-          return <Cell flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)} isLit={cell} />
-        })} 
+          return <Cell key={`${y}-${x}`} flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)} isLit={cell} />
+        })}
       </tr>
     })
   )
@@ -75,9 +74,10 @@ function Board({ nrows=5, ncols=5, chanceLightStartsOn=0.7 }) {
     <div>
       <table>
         <tbody>
-          {gameBoard}
+          { !hasWon(board) ? gameBoard : null }
         </tbody>
       </table>
+      { hasWon(board) ? <p>You won!</p> : null }
     </div>
   )
 }
