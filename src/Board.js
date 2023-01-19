@@ -57,17 +57,10 @@ function Board({ nrows=5, ncols=5, chanceLightStartsOn=0.7 }) {
   }
 
   if (hasWon(board)) {
-
+    // TODO: 
   }
-  // TODO
 
-  // const gameBoard = (
-  //   <tr>
-  //     <Cell flipCellsAroundMe ={flipCellsAround} isLit={true} />
-  //   </tr>
-  // )
-
-  const gameBoard2 = (
+  const gameBoard = (
     board.map((row, y) => {
       return <tr>
         {row.map((cell, x) => {
@@ -77,21 +70,16 @@ function Board({ nrows=5, ncols=5, chanceLightStartsOn=0.7 }) {
     })
   )
 
-  console.log(board);
-  console.log(gameBoard2);
-
   // make table board
   return (
     <div>
       <table>
         <tbody>
-          {gameBoard2}
+          {gameBoard}
         </tbody>
       </table>
     </div>
   )
-
-  // TODO
 }
 
 export default Board;
