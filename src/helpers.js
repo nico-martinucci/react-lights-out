@@ -1,22 +1,20 @@
 /**
- * createBoard: creates a new board of nrows by ncols with mixture of "O" for 
+ * createBoard: creates a new board of nrows by ncols with mixture of "O" for
  * cells that are "on" and "." for those that are off. Chance of an individual
  * cell being on is determined by chanceLightStartsOn float.
  * @param {integer} nrows number of rows
  * @param {integer} ncols number of cols
- * @param {float} chanceLightStartsOn between 0.0 and 1.0, inclusive 
- * @returns 
+ * @param {float} chanceLightStartsOn between 0.0 and 1.0, inclusive
+ * @returns
  */
 function createBoard(nrows, ncols, chanceLightStartsOn) {
     let initialBoard = [];
 
     for (let y = 0; y < nrows; y++) {
         initialBoard.push([]);
-        
+
         for (let x = 0; x < ncols; x++ ) {
-        let cell = Math.random() < chanceLightStartsOn
-            ? "O"
-            : "."
+        let cell = Math.random() < chanceLightStartsOn;
         initialBoard[y].push(cell);
         }
     }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Cell from "./Cell";
 import "./Board.css";
 import { createBoard, hasWon } from "./helpers";
+import cloneDeep from "lodash/cloneDeep";
 
 /** Game board of Lights out.
  *
@@ -43,13 +44,19 @@ function Board({ nrows, ncols, chanceLightStartsOn=0.7 }) {
         }
       };
 
-      // TODO: Make a (deep) copy of the oldBoard
+      const newBoard = cloneDeep(oldBoard);
 
-      // TODO: in the copy, flip this cell and the cells around it
+      flipCell(y-1,x, newBoard);
+      flipCell(y+1,x, newBoard);
+      flipCell(y,x, newBoard);
+      flipCell(y,x-1, newBoard);
+      flipCell(y,x+1, newBoard);
 
-      // TODO: return the copy
+      return newBoard;
     });
   }
+
+
 
   // if the game is won, just show a winning msg & render nothing else
   if (hasWon(board)) {
@@ -57,7 +64,13 @@ function Board({ nrows, ncols, chanceLightStartsOn=0.7 }) {
   }
   // TODO
 
+
+
+
   // make table board
+  return (
+
+  )
 
   // TODO
 }
