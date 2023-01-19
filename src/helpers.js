@@ -13,9 +13,9 @@ function createBoard(nrows, ncols, chanceLightStartsOn) {
     for (let y = 0; y < nrows; y++) {
         initialBoard.push([]);
 
-        for (let x = 0; x < ncols; x++ ) {
-        let cell = Math.random() < chanceLightStartsOn;
-        initialBoard[y].push(cell);
+        for (let x = 0; x < ncols; x++) {
+            let cell = Math.random() < chanceLightStartsOn;
+            initialBoard[y].push(cell);
         }
     }
 
